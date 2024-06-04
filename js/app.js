@@ -189,6 +189,7 @@ function search(searchTerm) {
             course.id.match(regex)
             || course.teacher.match(regex)
             || course.name.match(regex)
+            || course.brief.match(regex)
             || depData[course.department_id].match(regex)
         ))
         .slice(0, 50);
