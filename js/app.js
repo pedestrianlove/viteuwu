@@ -19,9 +19,18 @@ function parseBigInt(value, radix = 36) {
             ), BigInt(0));
 }
 
+function prependZeros(str) {
+    let remainder = str.length % 4;
+    if (remainder !== 0) {
+        let numberOfZeros = 4 - remainder;
+        str = '0'.repeat(numberOfZeros) + str;
+    }
+    return str;
+}
+
 function loadFromShareLink() {
     const shareKey = new URLSearchParams(location.search).get("share");
-    const courseIds = parseBigInt(shareKey).toString().match(/.{1,4}/g);
+    const courseIds = prependZeros(parseBigInt(shareKey).toString()).match(/.{1,4}/g);
     return courseIds.reduce((a, b) => (a[b] = true, a), {});
 }
 
