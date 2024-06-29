@@ -1,6 +1,6 @@
 import Toastify from "toastify-js";
-import DomToImage from "dom-to-image";
-import "toastify-js/src/toastify.css";
+import { toPng } from "dom-to-image";
+import "../style.css";
 
 import {
     APP_URL,
@@ -411,7 +411,7 @@ document.getElementById("download-link").onclick = () => {
     });
     setTimeout(function () {
         const table = document.getElementById("main-table");
-        DomToImage.toPng(table)
+        toPng(table)
             .then(function (dataURL) {
                 const link = document.createElement("a");
                 link.href = dataURL;
